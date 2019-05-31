@@ -8,7 +8,7 @@ import Echarts from 'echarts'
 import App from './App.vue'
 
 // import store from './vuex/store'
-import router from './router/router'
+import routers from './router/routers'
 // import Mock from './mock'
 
 
@@ -20,6 +20,9 @@ Vue.use(VueRouter);
 Vue.use(Vuex);
 // Vue.use(myCharts);/
 
+const router = new VueRouter({
+  routers
+})
 new Vue({
   el: '#app',
 	router,
