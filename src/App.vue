@@ -50,7 +50,7 @@
 		margin: 10px 0px;
 
 		.el-form-item {
-			margin-bottom: 10px;
+			// margin-bottom: 10px;
 		}
 	}
 

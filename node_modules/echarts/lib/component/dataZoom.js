@@ -18,20 +18,6 @@
 * under the License.
 */
 
-require("./dataZoom/typeDefaulter");
+require("./dataZoomSlider");
 
-require("./dataZoom/DataZoomModel");
-
-require("./dataZoom/DataZoomView");
-
-require("./dataZoom/SliderZoomModel");
-
-require("./dataZoom/SliderZoomView");
-
-require("./dataZoom/InsideZoomModel");
-
-require("./dataZoom/InsideZoomView");
-
-require("./dataZoom/dataZoomProcessor");
-
-require("./dataZoom/dataZoomAction");
+require("./dataZoomInside");

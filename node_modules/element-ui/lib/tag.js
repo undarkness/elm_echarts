@@ -82,7 +82,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 124);
+/******/ 	return __webpack_require__(__webpack_require__.s = 123);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -189,7 +189,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 124:
+/***/ 123:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -211,7 +211,7 @@ __webpack_require__.r(__webpack_exports__);
       type: String,
       default: 'light',
       validator: function validator(val) {
-        return ['dark', 'light', 'plain'].includes(val);
+        return ['dark', 'light', 'plain'].indexOf(val) !== -1;
       }
     }
   },

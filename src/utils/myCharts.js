@@ -87,7 +87,7 @@ const install = function(Vue) {
 					 *	yData: 竖轴数据
 					 */
 					lineChart: function(dom, tit, xData, yData) {
-						let xData = xData;
+						
 						if (typeof xData == "string") {
 							xData = this.xArr[xData];
 						}
@@ -275,7 +275,7 @@ const install = function(Vue) {
 					 *	yData: 竖轴数据
 					 */
 					barChart: function(dom, tit, xData, yData) {
-						let xData = xData;
+						
 						if (typeof xData == "string") {
 							xData = this.xArr[xData];
 						}
@@ -701,7 +701,7 @@ const install = function(Vue) {
 
 					//移动巡检派工数据处理
 					formatTaskData: function(dom, taskData) {
-						let taskData = [{
+						taskData = [{
 								task_name: "事故巡视",
 								task_count: [{
 										dep_name: "和华运维班",
