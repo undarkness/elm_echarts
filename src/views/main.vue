@@ -1,5 +1,8 @@
+<!--
+ * @Date: 2019-06-01 01:15:01
+ -->
 <template>
-	<section>
+	<section class="cesiumWrap">
 		main
 	</section>
 </template>
@@ -9,5 +12,6 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+ 
 </style>

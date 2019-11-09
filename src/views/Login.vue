@@ -1,5 +1,7 @@
+<!--
+ * @Date: 2019-10-20 16:54:15
+ -->
 <template>
-  <!-- login -->
   <div class="login">
     <div class="l-form">
       <div class="l-tip">xxx平台</div>
@@ -16,119 +18,123 @@
       </el-form>
     </div>
   </div>
-  <!-- index  -->
 </template>
 
 <script>
-  import testApi from '../api/api.js';
-  
-  export default {
-    name: "Login",
-    data() {
-      return {
-        loginForm: {
-          name: "",
-          password: ""
-        },
-        rules: {
-          name: [{
-              required: true,
-              message: "请输入邮箱地址",
-              trigger: "blur"
-            },
-            {
-              type: "email",
-              message: "请输入正确的邮箱地址",
-              trigger: ["blur", "change"]
-            }
-          ],
-          password: [{
-              required: true,
-              message: "请输入密码",
-              trigger: "blur"
-            }
-            // {
-            //   type: "password",
-            //   message: "密码错误",
-            //   trigger: "blur,change"
-            // }
-          ]
-        }
-      };
-    },
-    methods: {
-      submitForm(formName) {
-        console.log(testApi);
-        this.$refs[formName].validate(valid => {
-          if (valid) {
-            console.log(testApi);
-            testApi(this.loginForm).then(res => {
+import { login, getTest } from "../api/index.js";
+
+export default {
+  name: "Login",
+  data() {
+    return {
+      loginForm: {
+        name: "",
+        password: ""
+      },
+      rules: {
+        name: [
+          {
+            required: true,
+            message: "请输入邮箱地址",
+            trigger: "blur"
+          },
+          {
+            type: "email",
+            message: "请输入正确的邮箱地址",
+            trigger: ["blur", "change"]
+          }
+        ],
+        password: [
+          {
+            required: true,
+            message: "请输入密码",
+            trigger: "blur"
+          }
+          // {
+          //   type: "password",
+          //   message: "密码错误",
+          //   trigger: "blur,change"
+          // }
+        ]
+      }
+    };
+  },
+
+  methods: {
+    
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          login(this.loginForm)
+            .then(res => {
               if (res.data.status === 1) {
-                this.$router.push('/index');
+                this.$router.push("/home");
               } else {
-                Message({
+                this.$message({
                   message: res.data.message,
                   type: "error",
-                  duration: 5000,
-                })
+                  duration: 5000
+                });
               }
-            }).cache(error => {
-              Message({
+            })
+            .catch(error => {
+              console.log(error);
+              this.$message({
                 message: error,
                 type: "error",
-                duration: 5000,
-              })
-            })
-          } else {
-            return false;
-          }
-        });
-      }
-    },
-    computed: {}
-  };
+                duration: 5000
+              }); 
+            });
+        } else {
+          return false;
+        }
+      });
+    }
+  },
+  computed: {}
+};
 </script>
 
 <style lang="scss" scoped>
-  .login {
-    width: 100%;
-    height: 100%;
-    background: #333;
+.login {
+  width: 100%;
+  height: 100%;
+  background: #333;
 
-    .l-form {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translateY(-50%) translateX(-50%);
-      transform: translate(-50% -50%);
+  .l-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    transform: translate(-50% -50%);
 
-      width: 25rem;
-      padding: 1.5rem;
+    width: 25rem;
+    padding: 1.5rem;
+    margin: auto;
+    border-radius: 0.5rem;
+    background: #d7dde4;
+
+    .l-tip {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .el-form {
+      width: 100%;
       margin: auto;
-      border-radius: 0.5rem;
-      background: #d7dde4;
+      margin-top: 20px;
 
-      .l-tip {
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 700;
+      /deep/ .is-danger input {
+        border-color: #ec3156;
       }
 
-      .el-form {
-        width: 100%;
-        margin: auto;
-        margin-top: 20px;
-
-        /deep/ .is-danger input {
-          border-color: #ec3156;
-        }
-
-        .el-form-item {
-          button {
-            width: 100%;
-          }
+      .el-form-item {
+        button {
+          width: 100%;
         }
       }
     }
   }
+}
 </style>

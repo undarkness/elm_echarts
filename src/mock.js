@@ -1,7 +1,13 @@
+/*
+ * @Date: 2019-10-22 18:55:01
+ */
 import Mock from 'mockjs'
+import cjson from '../static/Cesium/Assets/approximateTerrainHeights.json'
 
-Mock.mock('/login', 'POST', (options) => {
-  // console.log(options) 
+Mock.setup({ timeout: '1000-2000' });
+
+Mock.mock(RegExp('/v1/loginTest' + ".*"), 'post', (options) => {
+  console.log(options) ;
   let data = JSON.parse(options.body);
   let name = data.name;
   let password = data.password;
@@ -17,3 +23,8 @@ Mock.mock('/login', 'POST', (options) => {
     }
   }
 })
+
+Mock.mock('/v1/getTest', 'get',  { IS_ERROR:0,data: "suc" })
+
+Mock.mock('/cesium/', 'get',  cjson)
+Mock.mock("//services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", 'get',  "//services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer")

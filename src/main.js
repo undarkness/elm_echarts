@@ -1,5 +1,9 @@
+/*
+ * @Date: 2019-06-01 01:15:01
+ */
 import Vue from 'vue'
 import ElementUI from 'element-ui'
+import 'normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'

@@ -64,6 +64,7 @@
             </el-header>
 
             <el-main>
+                <router-view></router-view>
                 <div id="testDOM" style="width: 940px;height:500px;">www</div>
             </el-main>
         </el-container>
