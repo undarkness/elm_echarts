@@ -5,7 +5,7 @@ import service from './config'
 
 
 const login = function login(data) {
-  return service.post('/loginTest', '', data);
+  return service.post('/loginTest', data);
 }
 
 const getTest = function getTest(params) {

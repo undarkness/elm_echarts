@@ -8,10 +8,10 @@
   // buildModuleUrl.setBaseUrl('../Cesium/');
 
   // 需要进行可视化的数据源的集合
-  const config = {
+  const cesium_config = {
     imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
       url:
-        "//services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+        "http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
     }),
     animation: false, // 是否显示动画控件
     shouldAnimate: true,
@@ -28,17 +28,17 @@
     sceneMode: 3 // 初始场景模式 1 2D模式 2 2D循环模式 3 3D模式  Cesium.SceneMode
     //fullscreenElement: document.body // 全屏时渲染的HTML元素
   };
-  const viewer = new Cesium.Viewer("cesiumContainer", config);
+  const cesiumViewer = new Cesium.Viewer("cesiumContainer", cesium_config);
 
   // 去除版权信息
-  viewer._cesiumWidget._creditContainer.style.display = "none";
+  cesiumViewer._cesiumWidget._creditContainer.style.display = "none";
 
   // Cesium3DTileset用来实现大范围的模型场景数据的加载应用
   // 三维倾斜模型、人工建模、BIM模型等等，都可以转换成3DTiles
-  const tileset = viewer.scene.primitives.add(
+  const tileset = cesiumViewer.scene.primitives.add(
     new Cesium.Cesium3DTileset({
-      //url: "./Cesium/Assets/approximateTerrainHeights.json", // 数据路径
-      url: "/cesium/",
+      url: "./static/Cesium/Assets/approximateTerrainHeights.json", // 数据路径
+      // url: "/cesium/",
       dynamicScreenSpaceError: true,
       cullWithChildrenBounds: false,
       // 当skipLevelOfDetail为true，是一个常量，用于定义加载切片时要跳过的最小级别数。
@@ -47,5 +47,5 @@
       // maximumNumberOfLoadedTiles: 1000,  //最大加载瓦片个数
     })
   );
-  viewer.zoomTo(tileset);
+  cesiumViewer.zoomTo(tileset);
 })();

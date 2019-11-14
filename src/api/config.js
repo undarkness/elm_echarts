@@ -10,16 +10,17 @@ import { Message } from "element-ui";
 //基础配置
 
 // 环境的切换
-if (process.env.NODE_ENV == "development") {
-  axios.defaults.baseURL = "/v1";
-} else if (process.env.NODE_ENV == "debug") {
-  axios.defaults.baseURL = "/v1";
-} else if (process.env.NODE_ENV == "production") {
-  axios.defaults.baseURL = "/v1";
-}
-console.log(process.env.NODE_ENV);
-axios.defaults.baseURL = "/v1";
-axios.defaults.timeout = 5000;
+// if (process.env.NODE_ENV == "production") {
+//   axios.defaults.baseURL = "/v1";
+// } else if (process.env.NODE_ENV == "debug") {
+//   axios.defaults.baseURL = "/v1";
+// } else if (process.env.NODE_ENV == "development") {
+//   axios.defaults.baseURL = "https://easy-mock.bookset.io/mock/5dc83352bd94c34583b56a24/v1";
+// } else {
+//   axios.defaults.baseURL = "https://easy-mock.bookset.io/mock/5dc83352bd94c34583b56a24/v1";
+// }
+axios.defaults.baseURL = "https://easy-mock.bookset.io/mock/5dc83352bd94c34583b56a24/v1";
+// axios.defaults.baseURL = "https://www.easy-mock.com/mock/5dc78b88d6861e3791553591/v1";
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 axios.defaults.headers.post["Content-Type"] =
@@ -45,9 +46,8 @@ axios.interceptors.response.use(
   response => {
     // 如果返回的状态码为200，说明接口请求成功，可以正常拿到数据
     // 否则的话抛出错误
-    // console.log(response);
     if (response.status === 200) {
-      return Promise.resolve(response);
+      return Promise.resolve(response.data);
     } else {
       return Promise.reject(response);
     }

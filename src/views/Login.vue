@@ -4,7 +4,7 @@
 <template>
   <div class="login">
     <div class="l-form">
-      <div class="l-tip">xxx平台</div>
+      <!-- <div class="l-tip">xxx平台</div> -->
       <el-form :model="loginForm" :rules="rules" ref="loginForm">
         <el-form-item prop="name" label="邮箱">
           <el-input v-model="loginForm.name" placeholder="请输入用户名"></el-input>
@@ -13,7 +13,12 @@
           <el-input v-model="loginForm.password" type="password" placeholder="请输入密码"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('loginForm')">登录</el-button>
+          <el-button
+            type="primary"
+            @click="submitForm('loginForm')"
+            :loading="isLogining"
+            :disable="isLogining"
+          >登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -31,6 +36,7 @@ export default {
         name: "",
         password: ""
       },
+      isLogining: false,
       rules: {
         name: [
           {
@@ -61,12 +67,14 @@ export default {
   },
 
   methods: {
-    
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
+          this.isLogining = true;
           login(this.loginForm)
             .then(res => {
+              console.log(res);
+              this.isLogining = false;
               if (res.data.status === 1) {
                 this.$router.push("/home");
               } else {
@@ -79,11 +87,12 @@ export default {
             })
             .catch(error => {
               console.log(error);
+              this.isLogining = false;
               this.$message({
                 message: error,
                 type: "error",
                 duration: 5000
-              }); 
+              });
             });
         } else {
           return false;

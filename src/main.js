@@ -13,7 +13,7 @@ import App from './App.vue'
 
 // import store from './vuex/store'
 import routes from './router/routes'
-import './mock.js'
+// import './mock.js'
 
 /* 表单验证组件 */
 // import validate, { config } from './public/vee-validate'; //表单验证插件配置
