@@ -15,7 +15,7 @@
     "element-ui": "^2.3.4",
     "mock": "^0.1.1",
     "mockjs": "^1.0.1-beta3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",
     "postcss-scss": "^2.0.0",
     "sass-loader": "^7.1.0",
